@@ -1,6 +1,5 @@
 package org.bukkit.entity;
 
-import org.bukkit.event.entity.ProjectileSource;
 import org.bukkit.projectiles.ProjectileSource;
 import org.jetbrains.annotations.Nullable;
 

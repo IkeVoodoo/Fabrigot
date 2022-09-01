@@ -2,6 +2,8 @@ package org.bukkit;
 
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.lang3.Validate;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.configuration.serialization.SerializableAs;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;

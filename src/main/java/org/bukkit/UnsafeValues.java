@@ -2,6 +2,10 @@ package org.bukkit;
 
 import net.minecraft.advancement.Advancement;
 import net.minecraft.item.ItemStack;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.material.MaterialData;
+import org.bukkit.plugin.InvalidPluginException;
+import org.bukkit.plugin.PluginDescriptionFile;
 
 /**
  * This interface provides value conversions that may be specific to a

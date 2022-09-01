@@ -1,8 +1,8 @@
 package org.bukkit.permissions;
 
 import org.apache.commons.lang3.Validate;
-import org.apache.logging.log4j.core.config.plugins.util.PluginManager;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.PluginManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

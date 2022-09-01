@@ -1,12 +1,13 @@
 package org.bukkit.configuration;
 
-import net.minecraft.item.ItemStack;
+import org.bukkit.inventory.ItemStack;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

@@ -1,6 +1,6 @@
 package org.bukkit.configuration;
 
-import net.minecraft.item.ItemStack;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;

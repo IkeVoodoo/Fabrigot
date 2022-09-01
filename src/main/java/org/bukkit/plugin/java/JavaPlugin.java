@@ -5,8 +5,12 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 import org.apache.commons.lang3.Validate;
 import org.apache.logging.log4j.core.config.yaml.YamlConfiguration;
 import org.bukkit.Server;
+import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginBase;
+import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginLoader;
+import org.bukkit.plugin.PluginLogger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

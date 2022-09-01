@@ -1,6 +1,10 @@
 package org.bukkit;
 
 import net.minecraft.entity.EntityType;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.entity.AnimalTamer;
+import org.bukkit.entity.Player;
+import org.bukkit.permissions.ServerOperator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
