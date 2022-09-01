@@ -1,7 +1,12 @@
 package org.bukkit;
 
 import com.google.common.collect.Maps;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.Hopper;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import org.apache.commons.lang3.Validate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -9,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.reflect.Constructor;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
@@ -9676,4 +9682,26 @@ public enum Material implements Keyed {
             // </editor-fold>
         }
     }
+
+    /**
+     * Convert this Material to an item, returns Optional.empty if this Material isn't an item
+     *
+     * @return This Material as a Minecraft Item, or an empty optional
+     */
+    @NotNull
+    public Optional<Item> asMinecraftItem() {
+        return Registry.ITEM.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
+    }
+
+
+    /**
+     * Convert this Material to a block, returns Optional.empty if this Material isn't a block
+     *
+     * @return This Material as a Minecraft Block, or an empty optional
+     */
+    @NotNull
+    public Optional<Block> asMinecraftBlock() {
+        return Registry.BLOCK.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
+    }
+
 }

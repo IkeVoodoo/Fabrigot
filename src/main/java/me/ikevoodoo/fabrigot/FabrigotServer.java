@@ -3,7 +3,6 @@ package me.ikevoodoo.fabrigot;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.item.Items;
 
 import java.io.File;
 
@@ -20,10 +19,12 @@ public class FabrigotServer implements DedicatedServerModInitializer {
             file.delete();
             file.mkdirs();
         }
+
     }
 
     @Override
     public void onInitializeServer() {
+        FabrigotServer.ensureDataDirectory();
 
     }
 }

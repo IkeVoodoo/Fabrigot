@@ -1,7 +1,10 @@
 package org.bukkit;
 
 import com.google.common.base.Preconditions;
-import net.minecraft.world.World;
+import org.bukkit.block.Block;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.util.NumberConversions;
+import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,6 +21,7 @@ import java.util.Map;
  * magnitude than 360 are valid, but may be normalized to any other equivalent
  * representation by the implementation.
  */
+@SuppressWarnings("unused")
 public class Location implements Cloneable, ConfigurationSerializable {
     private Reference<World> world;
     private double x;

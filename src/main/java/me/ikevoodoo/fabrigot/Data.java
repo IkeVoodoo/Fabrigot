@@ -1,7 +1,10 @@
 package me.ikevoodoo.fabrigot;
 
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.MinecraftVersion;
 import net.minecraft.server.dedicated.MinecraftDedicatedServer;
+
+import java.io.File;
+import java.nio.file.Path;
 
 public class Data {
 
@@ -10,4 +13,8 @@ public class Data {
      */
     public static MinecraftDedicatedServer SERVER = null;
 
+    /**
+     The server working directory
+     */
+    public static File SERVER_HOME = null;
 }
