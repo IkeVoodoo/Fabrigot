@@ -30,6 +30,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     implementation "net.md-5:bungeecord-chat:${project.bungeecord_chat_version}"
+    implementation "dev.jeka:jeka-core:${project.jeka_version}"
 }
 
 processResources {
