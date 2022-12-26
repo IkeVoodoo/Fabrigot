@@ -1,36 +1,32 @@
 package org.bukkit;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Collection;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.Entity;
+import org.bukkit.persistence.PersistentDataHolder;
+import org.bukkit.plugin.Plugin;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a chunk of blocks
  */
-public class Chunk extends PersistentDataHolder {
-
-    private final int x, y;
-    private final World world;
+public interface Chunk extends PersistentDataHolder {
 
     /**
      * Gets the X-coordinate of this chunk
      *
      * @return X-coordinate
      */
-    public int getX() {
-        return this.x;
-    }
+    int getX();
 
     /**
      * Gets the Z-coordinate of this chunk
      *
      * @return Z-coordinate
      */
-    public int getZ() {
-        return this.y;
-    }
+    int getZ();
 
     /**
      * Gets the world containing this chunk
@@ -38,9 +34,7 @@ public class Chunk extends PersistentDataHolder {
      * @return Parent World
      */
     @NotNull
-    public World getWorld() {
-        return this.world;
-    }
+    World getWorld();
 
     /**
      * Gets a block from this chunk
@@ -51,10 +45,7 @@ public class Chunk extends PersistentDataHolder {
      * @return the Block
      */
     @NotNull
-    public Block getBlock(int x, int y, int z) {
-        // TODO implement when blocks are added
-        return null;
-    }
+    Block getBlock(int x, int y, int z);
 
     /**
      * Capture thread-safe read-only snapshot of chunk data
@@ -62,10 +53,7 @@ public class Chunk extends PersistentDataHolder {
      * @return ChunkSnapshot
      */
     @NotNull
-    public ChunkSnapshot getChunkSnapshot() {
-        // TODO implement when chunk snapshot is added
-        return null;
-    }
+    ChunkSnapshot getChunkSnapshot();
 
     /**
      * Capture thread-safe read-only snapshot of chunk data
@@ -79,20 +67,14 @@ public class Chunk extends PersistentDataHolder {
      * @return ChunkSnapshot
      */
     @NotNull
-    public ChunkSnapshot getChunkSnapshot(boolean includeMaxblocky, boolean includeBiome, boolean includeBiomeTempRain) {
-        // TODO implement when chunk snapshot is added
-        return null;
-    }
+    ChunkSnapshot getChunkSnapshot(boolean includeMaxblocky, boolean includeBiome, boolean includeBiomeTempRain);
 
     /**
      * Checks if entities in this chunk are loaded.
      *
      * @return True if entities are loaded.
      */
-    public boolean isEntitiesLoaded() {
-        // TODO figure out this value
-        return false;
-    }
+    boolean isEntitiesLoaded();
 
     /**
      * Get a list of all entities in the chunk.
@@ -101,10 +83,7 @@ public class Chunk extends PersistentDataHolder {
      * @return The entities.
      */
     @NotNull
-    public Entity[] getEntities() {
-        // TODO implement when entities are added
-        return null;
-    }
+    Entity[] getEntities();
 
     /**
      * Get a list of all tile entities in the chunk.
@@ -112,20 +91,14 @@ public class Chunk extends PersistentDataHolder {
      * @return The tile entities.
      */
     @NotNull
-    public BlockState[] getTileEntities() {
-        // Implement when block state is added
-        return null;
-    }
+    BlockState[] getTileEntities();
 
     /**
      * Checks if the chunk is loaded.
      *
      * @return True if it is loaded.
      */
-    public boolean isLoaded() {
-        // TODO figure out if this chunk is loaded
-        return false;
-    }
+    boolean isLoaded();
 
     /**
      * Loads the chunk.
@@ -134,19 +107,14 @@ public class Chunk extends PersistentDataHolder {
      *     already exist
      * @return true if the chunk has loaded successfully, otherwise false
      */
-    public boolean load(boolean generate) {
-        // TODO generate chunk
-        return false;
-    }
+    boolean load(boolean generate);
 
     /**
      * Loads the chunk.
      *
      * @return true if the chunk has loaded successfully, otherwise false
      */
-    public boolean load() {
-        return this.load(true);
-    }
+    boolean load();
 
     /**
      * Unloads and optionally saves the Chunk
@@ -154,29 +122,21 @@ public class Chunk extends PersistentDataHolder {
      * @param save Controls whether the chunk is saved
      * @return true if the chunk has unloaded successfully, otherwise false
      */
-    public boolean unload(boolean save) {
-        // TODO save chunk
-        return false;
-    }
+    boolean unload(boolean save);
 
     /**
      * Unloads and optionally saves the Chunk
      *
      * @return true if the chunk has unloaded successfully, otherwise false
      */
-    public boolean unload() {
-        return this.unload(true);
-    }
+    boolean unload();
 
     /**
      * Checks if this chunk can spawn slimes without being a swamp biome.
      *
      * @return true if slimes are able to spawn in this chunk
      */
-    public boolean isSlimeChunk() {
-        // TODO check if this chunk is a slime chunk
-        return false;
-    }
+    boolean isSlimeChunk();
 
     /**
      * Gets whether the chunk at the specified chunk coordinates is force
@@ -187,10 +147,7 @@ public class Chunk extends PersistentDataHolder {
      * @return force load status
      * @see World#isChunkForceLoaded(int, int)
      */
-    public boolean isForceLoaded() {
-        // TODO check if this chunk is force loaded after world gets added
-        return false;
-    }
+    boolean isForceLoaded();
 
     /**
      * Sets whether the chunk at the specified chunk coordinates is force
@@ -201,10 +158,7 @@ public class Chunk extends PersistentDataHolder {
      * @param forced force load status
      * @see World#setChunkForceLoaded(int, int, boolean)
      */
-    public void setForceLoaded(boolean forced) {
-        // TODO set this chunk to be force loaded after world gets added
-
-    }
+    void setForceLoaded(boolean forced);
 
     /**
      * Adds a plugin ticket for this chunk, loading this chunk if it is not
@@ -221,10 +175,7 @@ public class Chunk extends PersistentDataHolder {
      * @throws IllegalStateException If the specified plugin is not enabled
      * @see World#addPluginChunkTicket(int, int, Plugin)
      */
-    public boolean addPluginChunkTicket(@NotNull Plugin plugin) {
-        // TODO add a plugin ticket once plugins are added
-        return false;
-    }
+    boolean addPluginChunkTicket(@NotNull Plugin plugin);
 
     /**
      * Removes the specified plugin's ticket for this chunk
@@ -239,10 +190,7 @@ public class Chunk extends PersistentDataHolder {
      * there is no plugin ticket for the chunk
      * @see World#removePluginChunkTicket(int, int, Plugin)
      */
-    public boolean removePluginChunkTicket(@NotNull Plugin plugin) {
-        // TODO remove a plugin ticket once the plugins are added
-        return false;
-    }
+    boolean removePluginChunkTicket(@NotNull Plugin plugin);
 
     /**
      * Retrieves a collection specifying which plugins have tickets for this
@@ -259,10 +207,7 @@ public class Chunk extends PersistentDataHolder {
      * @see World#getPluginChunkTickets(int, int)
      */
     @NotNull
-    public Collection<Plugin> getPluginChunkTickets() {
-        // TODO return all tickets once plugins are added
-        return null;
-    }
+    Collection<Plugin> getPluginChunkTickets();
 
     /**
      * Gets the amount of time in ticks that this chunk has been inhabited.
@@ -271,19 +216,14 @@ public class Chunk extends PersistentDataHolder {
      *
      * @return inhabited time
      */
-    public long getInhabitedTime() {
-        // TODO figure out how to get inhabited time from the server
-        return 0;
-    }
+    long getInhabitedTime();
 
     /**
      * Sets the amount of time in ticks that this chunk has been inhabited.
      *
      * @param ticks new inhabited time
      */
-    public void setInhabitedTime(long ticks) {
-        // TODO figure out how to set the inhabited time
-    }
+    void setInhabitedTime(long ticks);
 
     /**
      * Tests if this chunk contains the specified block.
@@ -291,7 +231,5 @@ public class Chunk extends PersistentDataHolder {
      * @param block block to test
      * @return if the block is contained within
      */
-    public boolean contains(@NotNull BlockData block) {
-        return false; // Implement when block data is added
-    }
+    boolean contains(@NotNull BlockData block);
 }

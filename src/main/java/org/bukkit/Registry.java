@@ -2,12 +2,15 @@ package org.bukkit;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.advancement.Advancement;
-import net.minecraft.client.sound.Sound;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.EntityType;
-import net.minecraft.loot.LootTables;
-import net.minecraft.world.biome.Biome;
+import org.bukkit.advancement.Advancement;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.block.Biome;
+import org.bukkit.boss.KeyedBossBar;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Villager;
+import org.bukkit.entity.memory.MemoryKey;
+import org.bukkit.loot.LootTables;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

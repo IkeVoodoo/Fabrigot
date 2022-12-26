@@ -1,5 +1,6 @@
 package org.bukkit;
 
+import org.bukkit.entity.Raider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

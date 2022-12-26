@@ -1,27 +1,14 @@
 package org.bukkit;
 
-import com.mojang.authlib.GameProfile;
-import me.ikevoodoo.fabrigot.Data;
-import me.ikevoodoo.fabrigot.Utils;
-import me.ikevoodoo.fabrigot.mixins.ServerConfigEntryAccessor;
-import net.minecraft.server.*;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralTextContent;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.Date;
 import java.util.Set;
-import java.util.stream.Collectors;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * A ban list, containing bans of some {@link Type}.
  */
-public class BanList {
-
-    public BanList(Type banListType) {
-        this.banListType = banListType;
-    }
+public interface BanList {
 
     /**
      * Represents a ban-type that a {@link BanList} may track.
@@ -38,9 +25,6 @@ public class BanList {
         ;
     }
 
-    private final Type banListType;
-
-
     /**
      * Gets a {@link BanEntry} by target.
      *
@@ -48,44 +32,7 @@ public class BanList {
      * @return the corresponding entry, or null if none found
      */
     @Nullable
-    public BanEntry getBanEntry(@NotNull String target) {
-        PlayerManager manager = Data.SERVER.getPlayerManager();
-        switch (this.banListType) {
-            case NAME -> {
-                ServerPlayerEntity entity = Utils.getPlayer(target);
-
-                if (entity == null)
-                    return null;
-
-                BannedPlayerEntry entry = manager.getUserBanList().get(entity.getGameProfile());
-
-                if (entry == null)
-                    return null;
-
-                return new BanEntry(
-                        ((ServerConfigEntryAccessor<GameProfile>) entry).getKey().getId().toString(),
-                        entry.getReason(),
-                        entry.getSource(),
-                        entry.getCreationDate(),
-                        entry.getExpiryDate());
-            }
-            case IP -> {
-                BannedIpEntry entry = manager.getIpBanList().get(target);
-
-                if (entry == null)
-                    return null;
-
-                return new BanEntry(
-                        ((ServerConfigEntryAccessor<String>) entry).getKey(),
-                        entry.getReason(),
-                        entry.getSource(),
-                        entry.getCreationDate(),
-                        entry.getExpiryDate());
-            }
-        }
-
-        return null;
-    }
+    public BanEntry getBanEntry(@NotNull String target);
 
     /**
      * Adds a ban to the this list. If a previous ban exists, this will
@@ -100,40 +47,7 @@ public class BanList {
      *     (updated) previous ban
      */
     @Nullable
-    public BanEntry addBan(@NotNull String target, @Nullable String reason, @Nullable Date expires, @Nullable String source) {
-        BanEntry entry = new BanEntry(target, reason, source, new Date(), expires);
-        PlayerManager manager = Data.SERVER.getPlayerManager();
-        switch (this.banListType) {
-            case NAME -> {
-                ServerPlayerEntity entity = Utils.getPlayer(target);
-                if (entity == null)
-                    return null;
-
-                BannedPlayerEntry playerEntry = new BannedPlayerEntry(
-                        entity.getGameProfile(),
-                        entry.getCreated(),
-                        entry.getSource(),
-                        entry.getExpiration(),
-                        entry.getReason()
-                );
-
-                manager.getUserBanList().add(playerEntry);
-            }
-            case IP -> {
-                BannedIpEntry ipEntry = new BannedIpEntry(
-                        entry.getTarget(),
-                        entry.getCreated(),
-                        entry.getSource(),
-                        entry.getExpiration(),
-                        entry.getReason()
-                );
-
-                manager.getIpBanList().add(ipEntry);
-            }
-        }
-
-        return entry;
-    }
+    public BanEntry addBan(@NotNull String target, @Nullable String reason, @Nullable Date expires, @Nullable String source);
 
     /**
      * Gets a set containing every {@link BanEntry} in this list.
@@ -141,37 +55,7 @@ public class BanList {
      * @return an immutable set containing every entry tracked by this list
      */
     @NotNull
-    public Set<BanEntry> getBanEntries() {
-        PlayerManager manager = Data.SERVER.getPlayerManager();
-        switch (this.banListType) {
-            case NAME -> {
-                return manager.getUserBanList()
-                        .values()
-                        .stream()
-                        .map(banEntry -> new BanEntry(
-                                ((ServerConfigEntryAccessor<GameProfile>) banEntry).getKey().getId().toString(),
-                                banEntry.getReason(),
-                                banEntry.getSource(),
-                                banEntry.getCreationDate(),
-                                banEntry.getExpiryDate()))
-                        .collect(Collectors.toSet());
-            }
-            case IP -> {
-                return manager.getIpBanList()
-                        .values()
-                        .stream()
-                        .map(banEntry -> new BanEntry(
-                                ((ServerConfigEntryAccessor<String>) banEntry).getKey(),
-                                banEntry.getReason(),
-                                banEntry.getSource(),
-                                banEntry.getCreationDate(),
-                                banEntry.getExpiryDate()))
-                        .collect(Collectors.toSet());
-            }
-        }
-
-        return Set.of();
-    }
+    public Set<BanEntry> getBanEntries();
 
     /**
      * Gets if a {@link BanEntry} exists for the target, indicating an active
@@ -181,24 +65,7 @@ public class BanList {
      * @return true if a {@link BanEntry} exists for the name, indicating an
      *     active ban status, false otherwise
      */
-    public boolean isBanned(@NotNull String target) {
-        PlayerManager manager = Data.SERVER.getPlayerManager();
-        switch (this.banListType) {
-            case NAME -> {
-                ServerPlayerEntity entity = Utils.getPlayer(target);
-
-                if (entity == null)
-                    return false;
-
-                return manager.getUserBanList().contains(entity.getGameProfile());
-            }
-            case IP -> {
-                return manager.getIpBanList().isBanned(target);
-            }
-        }
-
-        return false;
-    }
+    public boolean isBanned(@NotNull String target);
 
     /**
      * Removes the specified target from this list, therefore indicating a
@@ -206,18 +73,5 @@ public class BanList {
      *
      * @param target the target to remove from this list
      */
-    public void pardon(@NotNull String target) {
-        PlayerManager manager = Data.SERVER.getPlayerManager();
-        switch (this.banListType) {
-            case NAME -> {
-                ServerPlayerEntity entity = Utils.getPlayer(target);
-
-                if (entity == null)
-                    return;
-
-                manager.getUserBanList().remove(entity.getGameProfile());
-            }
-            case IP -> manager.getIpBanList().remove(target);
-        }
-    }
+    public void pardon(@NotNull String target);
 }

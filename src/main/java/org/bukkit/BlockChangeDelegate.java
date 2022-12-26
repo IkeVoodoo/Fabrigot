@@ -1,6 +1,7 @@
 package org.bukkit;
 
 import net.minecraft.util.math.BlockPos;
+import org.bukkit.block.data.BlockData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;

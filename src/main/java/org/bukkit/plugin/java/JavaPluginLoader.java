@@ -18,7 +18,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.logging.Level;
 import java.util.regex.Pattern;
-import org.apache.commons.lang.Validate;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Server;
 import org.bukkit.Warning;
@@ -175,21 +174,19 @@ public final class JavaPluginLoader implements PluginLoader {
 
             return new PluginDescriptionFile(stream);
 
-        } catch (IOException ex) {
-            throw new InvalidDescriptionException(ex);
-        } catch (YAMLException ex) {
+        } catch (IOException | YAMLException ex) {
             throw new InvalidDescriptionException(ex);
         } finally {
             if (jar != null) {
                 try {
                     jar.close();
-                } catch (IOException e) {
+                } catch (IOException ignored) {
                 }
             }
             if (stream != null) {
                 try {
                     stream.close();
-                } catch (IOException e) {
+                } catch (IOException ignored) {
                 }
             }
         }
@@ -206,7 +203,7 @@ public final class JavaPluginLoader implements PluginLoader {
         for (PluginClassLoader loader : loaders) {
             try {
                 return loader.loadClass0(name, resolve, false, ((SimplePluginManager) server.getPluginManager()).isTransitiveDepend(description, loader.plugin.getDescription()));
-            } catch (ClassNotFoundException cnfe) {
+            } catch (ClassNotFoundException ignored) {
             }
         }
         return null;

@@ -8,16 +8,19 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.boss.DragonBattle;
-import org.bukkit.entity.AbstractArrow;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.LightningStrike;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
+import org.bukkit.generator.BiomeProvider;
+import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.WorldInfo;
 import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.Metadatable;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.messaging.PluginMessageRecipient;
+import org.bukkit.util.BoundingBox;
+import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,6 +35,7 @@ import java.util.function.Predicate;
 /**
  * Represents a world, which may contain entities, chunks and blocks
  */
+@SuppressWarnings("unused")
 public interface World extends RegionAccessor, WorldInfo, PluginMessageRecipient, Metadatable {
 
     /**

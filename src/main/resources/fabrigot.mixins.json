@@ -4,9 +4,13 @@
   "package": "me.ikevoodoo.fabrigot.mixins",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ClientConnectionMixin",
     "GameRulesAccessor",
     "MinecraftDedicatedServerMixin",
-    "ServerConfigEntryAccessor"
+    "MinecraftServerMixin",
+    "PlayerManagerMixin",
+    "ServerConfigEntryAccessor",
+    "ServerPlayNetworkHandlerMixin"
   ],
   "client": [
   ],

@@ -1,6 +1,9 @@
 package org.bukkit;
 
 import net.minecraft.world.gen.chunk.ChunkGenerator;
+import org.bukkit.command.CommandSender;
+import org.bukkit.generator.BiomeProvider;
+import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

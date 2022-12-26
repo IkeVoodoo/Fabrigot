@@ -1,7 +1,6 @@
 package org.bukkit;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Tameable;
+import org.bukkit.entity.*;
 import org.jetbrains.annotations.NotNull;
 
 /**

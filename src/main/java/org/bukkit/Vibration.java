@@ -1,5 +1,7 @@
 package org.bukkit;
 
+import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.jetbrains.annotations.NotNull;
 
 /**

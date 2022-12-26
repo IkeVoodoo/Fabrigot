@@ -2,15 +2,32 @@ package org.bukkit;
 
 import com.google.common.collect.Maps;
 import net.minecraft.block.*;
-import net.minecraft.block.entity.Hopper;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import org.apache.commons.lang3.Validate;
+import org.bukkit.block.Dispenser;
+import org.bukkit.block.data.*;
+import org.bukkit.block.data.type.Bed;
+import org.bukkit.block.data.type.Cake;
+import org.bukkit.block.data.type.Chest;
+import org.bukkit.block.data.type.Comparator;
+import org.bukkit.block.data.type.EnderChest;
+import org.bukkit.block.data.type.Furnace;
+import org.bukkit.block.data.type.Gate;
+import org.bukkit.block.data.type.Ladder;
+import org.bukkit.block.data.type.Observer;
+import org.bukkit.block.data.type.RedstoneWire;
+import org.bukkit.block.data.type.Sign;
+import org.bukkit.block.data.type.TrapDoor;
+import org.bukkit.block.data.type.Tripwire;
+import org.bukkit.block.data.type.TripwireHook;
+import org.bukkit.block.data.type.*;
 import org.bukkit.entity.Ageable;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.material.Directional;
-import org.bukkit.material.MaterialData;
+import org.bukkit.material.Leaves;
+import org.bukkit.material.Sapling;
+import org.bukkit.material.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -3279,15 +3296,15 @@ public enum Material implements Keyed {
     @Deprecated
     LEGACY_STONE_SLAB2(182),
     @Deprecated
-    LEGACY_SPRUCE_FENCE_GATE(183, org.bukkit.material.Gate.class),
+    LEGACY_SPRUCE_FENCE_GATE(183, Gate.class),
     @Deprecated
-    LEGACY_BIRCH_FENCE_GATE(184, org.bukkit.material.Gate.class),
+    LEGACY_BIRCH_FENCE_GATE(184, Gate.class),
     @Deprecated
-    LEGACY_JUNGLE_FENCE_GATE(185, org.bukkit.material.Gate.class),
+    LEGACY_JUNGLE_FENCE_GATE(185, Gate.class),
     @Deprecated
-    LEGACY_DARK_OAK_FENCE_GATE(186, org.bukkit.material.Gate.class),
+    LEGACY_DARK_OAK_FENCE_GATE(186, Gate.class),
     @Deprecated
-    LEGACY_ACACIA_FENCE_GATE(187, org.bukkit.material.Gate.class),
+    LEGACY_ACACIA_FENCE_GATE(187, Gate.class),
     @Deprecated
     LEGACY_SPRUCE_FENCE(188),
     @Deprecated
@@ -9693,7 +9710,7 @@ public enum Material implements Keyed {
      */
     @NotNull
     public Optional<Item> asMinecraftItem() {
-        return Registry.ITEM.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
+        return net.minecraft.util.registry.Registry.ITEM.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
     }
 
 
@@ -9704,7 +9721,7 @@ public enum Material implements Keyed {
      */
     @NotNull
     public Optional<Block> asMinecraftBlock() {
-        return Registry.BLOCK.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
+        return net.minecraft.util.registry.Registry.BLOCK.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
     }
 
 }

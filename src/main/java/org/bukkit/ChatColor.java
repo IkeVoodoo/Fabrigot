@@ -2,6 +2,7 @@ package org.bukkit;
 
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.Validate;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

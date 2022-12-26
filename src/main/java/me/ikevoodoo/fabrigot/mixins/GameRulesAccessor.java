@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(GameRules.class)
 public interface GameRulesAccessor {
 
-    @Invoker("setValue")
-    <T extends GameRules.Rule<T>> void setValue(GameRules.Key<T> key, GameRules rules, @Nullable MinecraftServer server);
+    @Invoker
+    <T extends GameRules.Rule<T>> void callSetValue(GameRules.Key<T> key, GameRules rules, @Nullable MinecraftServer server);
 
 }

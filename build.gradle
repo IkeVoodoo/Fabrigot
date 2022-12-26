@@ -31,6 +31,7 @@ dependencies {
 
     implementation "net.md-5:bungeecord-chat:${project.bungeecord_chat_version}"
     implementation "dev.jeka:jeka-core:${project.jeka_version}"
+    implementation "org.yaml:snakeyaml:${project.snake_yaml_version}"
 }
 
 processResources {

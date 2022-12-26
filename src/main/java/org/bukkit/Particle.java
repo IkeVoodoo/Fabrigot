@@ -2,6 +2,8 @@ package org.bukkit;
 
 import com.google.common.base.Preconditions;
 import net.minecraft.item.ItemStack;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.material.MaterialData;
 import org.jetbrains.annotations.NotNull;
 
 public enum Particle {

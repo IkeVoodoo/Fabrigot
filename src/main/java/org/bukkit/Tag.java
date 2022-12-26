@@ -1,6 +1,6 @@
 package org.bukkit;
 
-import net.minecraft.entity.EntityType;
+import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;

@@ -3,6 +3,7 @@ package org.bukkit;
 import com.google.common.collect.Maps;
 import net.minecraft.block.Material;
 import net.minecraft.potion.Potion;
+import org.bukkit.block.BlockFace;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
