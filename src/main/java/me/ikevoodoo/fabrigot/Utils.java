@@ -17,9 +17,9 @@ public class Utils {
 
     public static ServerPlayerEntity getPlayer(String name) {
         try {
-            return Data.SERVER.getPlayerManager().getPlayer(UUID.fromString(name));
+            return Fabrigot.getMinecraftServer().getPlayerManager().getPlayer(UUID.fromString(name));
         } catch (Exception e) {
-            return Data.SERVER.getPlayerManager().getPlayer(name);
+            return Fabrigot.getMinecraftServer().getPlayerManager().getPlayer(name);
         }
     }
 

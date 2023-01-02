@@ -1,7 +1,7 @@
 package me.ikevoodoo.fabrigot.api.bans.lists;
 
 import com.mojang.authlib.GameProfile;
-import me.ikevoodoo.fabrigot.Data;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import me.ikevoodoo.fabrigot.api.bans.BannedPlayer;
 import net.minecraft.server.BannedPlayerList;
 import org.bukkit.BanEntry;
@@ -53,12 +53,12 @@ public class PlayerBanList implements ServerBanList<BannedPlayer, GameProfile> {
 
     @Override
     public @Nullable BanEntry getBanEntry(@NotNull String target) {
-        return new BannedPlayer(this.list.get(Data.FABRIGOT_SERVER.findPlayer(target).getGameProfile())).toSpigot();
+        return new BannedPlayer(this.list.get(Fabrigot.getFabrigotServer().findPlayerEntity(target).getGameProfile())).toSpigot();
     }
 
     @Override
     public @Nullable BanEntry addBan(@NotNull String target, @Nullable String reason, @Nullable Date expires, @Nullable String source) {
-        var entry = new BannedPlayer(Data.FABRIGOT_SERVER.findPlayer(target).getGameProfile(), new Date(), source, expires, reason);
+        var entry = new BannedPlayer(Fabrigot.getFabrigotServer().findPlayerEntity(target).getGameProfile(), new Date(), source, expires, reason);
         this.list.add(entry.toMinecraft());
         return entry.toSpigot();
     }
@@ -75,11 +75,11 @@ public class PlayerBanList implements ServerBanList<BannedPlayer, GameProfile> {
 
     @Override
     public boolean isBanned(@NotNull String target) {
-        return this.containsKey(Data.FABRIGOT_SERVER.findPlayer(target).getGameProfile());
+        return this.containsKey(Fabrigot.getFabrigotServer().findPlayerEntity(target).getGameProfile());
     }
 
     @Override
     public void pardon(@NotNull String target) {
-        this.removeKey(Data.FABRIGOT_SERVER.findPlayer(target).getGameProfile());
+        this.removeKey(Fabrigot.getFabrigotServer().findPlayerEntity(target).getGameProfile());
     }
 }

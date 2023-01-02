@@ -10,9 +10,9 @@ import me.ikevoodoo.fabrigot.api.bans.lists.PlayerBanList;
 import me.ikevoodoo.fabrigot.commands.FabrigotCommandRegister;
 import me.ikevoodoo.fabrigot.commands.FabrigotCommandTranslator;
 import me.ikevoodoo.fabrigot.impl.org.bukkit.entity.SpigotPlayer;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.server.dedicated.MinecraftDedicatedServer;
-import net.minecraft.server.network.ServerPlayerEntity;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -23,15 +23,15 @@ import java.util.UUID;
 
 public class VanillaFabrigotServer implements FabrigotServer {
 
-    private final MinecraftDedicatedServer server;
+    private final MinecraftServer server;
     private final CommandDispatcher<ServerCommandSource> dispatcher;
     private final FabrigotCommandRegister fabrigotCommandRegister;
     private final Map<UUID, Player> playerMap;
 
-    public VanillaFabrigotServer(MinecraftDedicatedServer server, CommandDispatcher<ServerCommandSource> dispatcher) {
+    public VanillaFabrigotServer(MinecraftServer server, CommandDispatcher<ServerCommandSource> dispatcher) {
         this.server = server;
         this.dispatcher = dispatcher;
-        this.fabrigotCommandRegister = new FabrigotCommandRegister(dispatcher, new FabrigotCommandTranslator(this));
+        this.fabrigotCommandRegister = new FabrigotCommandRegister(dispatcher, new FabrigotCommandTranslator());
 
         this.playerMap = new HashMap<>();
     }
@@ -87,20 +87,34 @@ public class VanillaFabrigotServer implements FabrigotServer {
     }
 
     @Override
-    public ServerPlayerEntity getPlayer(UUID id) {
+    public PlayerEntity getPlayerEntity(UUID id) {
         return this.server.getPlayerManager().getPlayer(id);
     }
 
     @Override
-    public ServerPlayerEntity findPlayer(String target) {
+    public PlayerEntity findPlayerEntityExact(String target) {
         try {
-            return this.getPlayer(UUID.fromString(target));
+            return this.getPlayerEntity(UUID.fromString(target));
+        } catch (IllegalArgumentException e) {
+            for (PlayerEntity PlayerEntity : server.getPlayerManager().getPlayerList()) {
+                if (!PlayerEntity.getGameProfile().getName().equals(target)) continue;
+                return PlayerEntity;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public PlayerEntity findPlayerEntity(String target) {
+        try {
+            return this.getPlayerEntity(UUID.fromString(target));
         } catch (IllegalArgumentException e) {
             var lower = target.toLowerCase();
-            for (ServerPlayerEntity serverPlayerEntity : server.getPlayerManager().getPlayerList()) {
-                if (!serverPlayerEntity.getGameProfile().getName().equals(target)) continue;
-                if (!serverPlayerEntity.getGameProfile().getName().toLowerCase().startsWith(lower)) continue;
-                return serverPlayerEntity;
+            for (PlayerEntity PlayerEntity : this.server.getPlayerManager().getPlayerList()) {
+                if (!PlayerEntity.getGameProfile().getName().equals(target)) continue;
+                if (!PlayerEntity.getGameProfile().getName().toLowerCase().startsWith(lower)) continue;
+                return PlayerEntity;
             }
         }
 
@@ -108,31 +122,17 @@ public class VanillaFabrigotServer implements FabrigotServer {
     }
 
     @Override
-    public ServerPlayerEntity findPlayerExact(String target) {
-        try {
-            return this.getPlayer(UUID.fromString(target));
-        } catch (IllegalArgumentException e) {
-            for (ServerPlayerEntity serverPlayerEntity : server.getPlayerManager().getPlayerList()) {
-                if (!serverPlayerEntity.getGameProfile().getName().equals(target)) continue;
-                return serverPlayerEntity;
-            }
-        }
-
-        return null;
-    }
-
-    @Override
-    public Player convertPlayer(ServerPlayerEntity entity) {
+    public Player convertPlayerEntity(PlayerEntity entity) {
         return this.playerMap.computeIfAbsent(entity.getUuid(), id -> new SpigotPlayer(entity));
     }
 
     @Override
     public List<Player> getOnlinePlayers() {
-        return this.playerMap.values().stream().toList();
+        return this.server.getPlayerManager().getPlayerList().stream().map(this::convertPlayerEntity).toList();
     }
 
     @Override
-    public void playerDisconnected(ServerPlayerEntity entity) {
+    public void playerDisconnected(PlayerEntity entity) {
         this.playerMap.remove(entity.getUuid());
     }
 
@@ -163,7 +163,7 @@ public class VanillaFabrigotServer implements FabrigotServer {
 //
 //    @Override
 //    public Player getSpigotPlayer(UUID id) {
-//        ServerPlayerEntity entity = this.server.getPlayerManager().getPlayer(id);
+//        PlayerEntity entity = this.server.getPlayerManager().getPlayer(id);
 //        return new SpigotPlayer(entity);
 //    }
 //

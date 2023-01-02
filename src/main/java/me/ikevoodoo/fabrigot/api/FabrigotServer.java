@@ -2,7 +2,8 @@ package me.ikevoodoo.fabrigot.api;
 
 import me.ikevoodoo.fabrigot.api.bans.BanHolder;
 import me.ikevoodoo.fabrigot.commands.FabrigotCommandRegister;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -20,13 +21,13 @@ public interface FabrigotServer extends BanHolder {
 //
 //    void spigotToBrigadier(Command command);
 
-    ServerPlayerEntity getPlayer(UUID id);
-    ServerPlayerEntity findPlayer(String target);
-    ServerPlayerEntity findPlayerExact(String target);
+    PlayerEntity getPlayerEntity(UUID id);
+    PlayerEntity findPlayerEntityExact(String target);
+    PlayerEntity findPlayerEntity(String target);
 
-    Player convertPlayer(ServerPlayerEntity entity);
+    Player convertPlayerEntity(PlayerEntity entity);
     List<Player> getOnlinePlayers();
-    void playerDisconnected(ServerPlayerEntity entity);
+    void playerDisconnected(PlayerEntity entity);
     String getVersion();
 
     FabrigotCommandRegister getCommandRegister();

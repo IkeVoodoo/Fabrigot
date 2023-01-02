@@ -1,17 +1,0 @@
-
-e
-java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8•·ú¤¸0
-R
-java:S1133"5Do not forget to remove this deprecated code someday.(Ø”ğ8•·ú¤¸0
-V
-java:S5993"9Change the visibility of this constructor to "protected".(¥”„÷8–·ú¤¸0
-[
-java:S5993"9Change the visibility of this constructor to "protected".(çˆÑúÿÿÿÿ8–·ú¤¸0
-W
-java:S1133"5Do not forget to remove this deprecated code someday.(çˆÑúÿÿÿÿ8—·ú¤¸0
-Q
-java:S1133H"5Do not forget to remove this deprecated code someday.(Üˆú8™·ú¤¸0
-R
-java:S1133S"5Do not forget to remove this deprecated code someday.(×àò·8™·ú¤¸0
-u
-java:S2975]"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Ú°¬ûÿÿÿÿ8™·ú¤¸0

@@ -20,7 +20,7 @@ public class SpigotScheduler implements BukkitScheduler {
     private final Executor schedulerThread;
 
     public SpigotScheduler() {
-        this.schedulerThread = Executors.newSingleThreadExecutor();
+        this.schedulerThread = Executors.newCachedThreadPool();
     }
 
     @Override
@@ -249,7 +249,7 @@ public class SpigotScheduler implements BukkitScheduler {
             list.remove(cancelledTask);
         });
 
-        var list = this.tasks.getOrDefault(plugin, new ArrayList<>());
+        var list = this.tasks.getOrDefault(plugin, new CopyOnWriteArrayList<>());
         list.add(spigotTask);
         this.tasks.put(plugin, list);
     }

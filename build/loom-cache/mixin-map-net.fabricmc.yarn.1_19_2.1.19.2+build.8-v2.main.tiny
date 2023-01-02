@@ -1,3 +1,0 @@
-v1	named	intermediary
-FIELD	me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin	Lnet/minecraft/server/network/ServerPlayerEntity;	player	field_14140
-METHOD	me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin	(Lnet/minecraft/network/packet/c2s/play/ChatMessageC2SPacket;)Lnet/minecraft/network/message/SignedMessage;	getSignedMessage	method_45011

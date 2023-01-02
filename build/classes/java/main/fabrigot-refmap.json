@@ -20,16 +20,17 @@
       "wakeUp": "Lnet/minecraft/class_3222;method_7358(ZZ)V"
     },
     "me/ikevoodoo/fabrigot/mixins/MinecraftServerMixin": {
-      "createWorlds": "Lnet/minecraft/server/MinecraftServer;method_3786(Lnet/minecraft/class_3949;)V"
+      "createWorlds": "Lnet/minecraft/server/MinecraftServer;method_3786(Lnet/minecraft/class_3949;)V",
+      "loadWorld": "Lnet/minecraft/server/MinecraftServer;method_3735()V"
     },
     "me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin": {
       "handleDecoratedMessage": "Lnet/minecraft/class_3244;method_44155(Lnet/minecraft/class_7471;)V",
       "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V": "Lnet/minecraft/class_3324;method_43514(Lnet/minecraft/class_2561;Z)V",
       "onDisconnected": "Lnet/minecraft/class_3244;method_10839(Lnet/minecraft/class_2561;)V"
     },
-    "me/ikevoodoo/fabrigot/mixins/MinecraftDedicatedServerMixin": {
-      "setupServer": "Lnet/minecraft/class_3176;method_3823()Z",
-      "Lnet/minecraft/server/dedicated/MinecraftDedicatedServer;setPlayerManager(Lnet/minecraft/server/PlayerManager;)V": "Lnet/minecraft/class_3176;method_3846(Lnet/minecraft/class_3324;)V"
+    "me/ikevoodoo/fabrigot/mixins/ClientPlayNetworkHandlerMixin": {
+      "Lnet/minecraft/client/network/message/MessageHandler;onChatMessage(Lnet/minecraft/network/message/SignedMessage;Lnet/minecraft/network/message/MessageType$Parameters;)V": "Lnet/minecraft/class_7594;method_44733(Lnet/minecraft/class_7471;Lnet/minecraft/class_2556$class_7602;)V",
+      "onChatMessage": "Lnet/minecraft/class_634;method_43595(Lnet/minecraft/class_7438;)V"
     },
     "me/ikevoodoo/fabrigot/mixins/PlayerManagerMixin": {
       "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V": "Lnet/minecraft/class_3324;method_43514(Lnet/minecraft/class_2561;Z)V",
@@ -61,16 +62,17 @@
         "wakeUp": "Lnet/minecraft/class_3222;method_7358(ZZ)V"
       },
       "me/ikevoodoo/fabrigot/mixins/MinecraftServerMixin": {
-        "createWorlds": "Lnet/minecraft/server/MinecraftServer;method_3786(Lnet/minecraft/class_3949;)V"
+        "createWorlds": "Lnet/minecraft/server/MinecraftServer;method_3786(Lnet/minecraft/class_3949;)V",
+        "loadWorld": "Lnet/minecraft/server/MinecraftServer;method_3735()V"
       },
       "me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin": {
         "handleDecoratedMessage": "Lnet/minecraft/class_3244;method_44155(Lnet/minecraft/class_7471;)V",
         "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V": "Lnet/minecraft/class_3324;method_43514(Lnet/minecraft/class_2561;Z)V",
         "onDisconnected": "Lnet/minecraft/class_3244;method_10839(Lnet/minecraft/class_2561;)V"
       },
-      "me/ikevoodoo/fabrigot/mixins/MinecraftDedicatedServerMixin": {
-        "setupServer": "Lnet/minecraft/class_3176;method_3823()Z",
-        "Lnet/minecraft/server/dedicated/MinecraftDedicatedServer;setPlayerManager(Lnet/minecraft/server/PlayerManager;)V": "Lnet/minecraft/class_3176;method_3846(Lnet/minecraft/class_3324;)V"
+      "me/ikevoodoo/fabrigot/mixins/ClientPlayNetworkHandlerMixin": {
+        "Lnet/minecraft/client/network/message/MessageHandler;onChatMessage(Lnet/minecraft/network/message/SignedMessage;Lnet/minecraft/network/message/MessageType$Parameters;)V": "Lnet/minecraft/class_7594;method_44733(Lnet/minecraft/class_7471;Lnet/minecraft/class_2556$class_7602;)V",
+        "onChatMessage": "Lnet/minecraft/class_634;method_43595(Lnet/minecraft/class_7438;)V"
       },
       "me/ikevoodoo/fabrigot/mixins/PlayerManagerMixin": {
         "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V": "Lnet/minecraft/class_3324;method_43514(Lnet/minecraft/class_2561;Z)V",

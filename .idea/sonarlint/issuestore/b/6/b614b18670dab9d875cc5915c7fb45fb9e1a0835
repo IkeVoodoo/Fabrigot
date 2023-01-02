@@ -1,15 +1,0 @@
-
-_
-java:S6355æ"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
-Q
-java:S1133è"5Do not forget to remove this deprecated code someday.(Ë»÷¼þÿÿÿÿ
-_
-java:S6355·"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
-Q
-java:S1133¹"5Do not forget to remove this deprecated code someday.(î˜¯ƒÿÿÿÿÿ
-_
-java:S6355“"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
-Q
-java:S1133•"5Do not forget to remove this deprecated code someday.(÷Ï ôþÿÿÿÿ
-D
-java:S1123•"(Add the missing @deprecated Javadoc tag.(÷Ï ôþÿÿÿÿ

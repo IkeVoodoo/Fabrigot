@@ -1,6 +1,6 @@
 package me.ikevoodoo.fabrigot.impl.org.bukkit.scheduler;
 
-import me.ikevoodoo.fabrigot.Data;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import me.ikevoodoo.fabrigot.events.Events;
 import net.minecraft.server.MinecraftServer;
 import org.bukkit.plugin.Plugin;
@@ -23,7 +23,7 @@ public class SpigotDelayedTask extends SpigotTask {
 
     @Override
     public void runAfter(long delayTicks) {
-        this.start = Data.SERVER.getTicks() + delayTicks;
+        this.start = Fabrigot.getMinecraftServer().getTicks() + delayTicks;
 
         Events.START_SERVER_TICK_EVENT.addListener(this);
     }

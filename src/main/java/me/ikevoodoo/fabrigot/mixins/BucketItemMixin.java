@@ -1,6 +1,6 @@
 package me.ikevoodoo.fabrigot.mixins;
 
-import me.ikevoodoo.fabrigot.Data;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BucketItem;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -27,7 +27,7 @@ public abstract class BucketItemMixin {
 
             // TODO remove nulls
             var event = new PlayerBucketEmptyEvent(
-                    Data.FABRIGOT_SERVER.convertPlayer(serverPlayerEntity),
+                    Fabrigot.getFabrigotServer().convertPlayerEntity(serverPlayerEntity),
                     null, // Block
                     null, // Clicked
                     null, // Face

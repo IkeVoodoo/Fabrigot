@@ -1,6 +1,6 @@
 package me.ikevoodoo.fabrigot.mixins;
 
-import me.ikevoodoo.fabrigot.FabrigotServer;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.WorldGenerationProgressListener;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,11 @@ public class MinecraftServerMixin {
 
     @Inject(method = "createWorlds", at = @At("TAIL"))
     protected void afterWorldCreation(WorldGenerationProgressListener worldGenerationProgressListener, CallbackInfo ci) {
-        FabrigotServer.postWorld();
+        Fabrigot.postWorld();
     }
 
+    @Inject(method = "loadWorld", at = @At("HEAD"))
+    protected void atServerStart(CallbackInfo ci) {
+        Fabrigot.serverStarted((MinecraftServer) (Object) this);
+    }
 }

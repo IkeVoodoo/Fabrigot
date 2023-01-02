@@ -9733,4 +9733,5 @@ public enum Material implements Keyed {
         return Material.valueOf(Registry.BLOCK.getId(block).getPath().toUpperCase(Locale.ROOT));
     }
 
+
 }

@@ -1,17 +1,0 @@
-
-o
-java:S1192ž"SDefine a constant instead of duplicating this literal "Not supported yet." 3 times.(³È‹—ýÿÿÿÿ
-_
-java:S6355Š"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
-L
-java:S1133Œ"5Do not forget to remove this deprecated code someday.(À¥º–
-_
-java:S6355¤"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
-Q
-java:S1133¦"5Do not forget to remove this deprecated code someday.(Þ´ŽÝúÿÿÿÿ
-_
-java:S6355•"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
-Q
-java:S1133—"5Do not forget to remove this deprecated code someday.(¿ÇÌìýÿÿÿÿ
-D
-java:S1123—"(Add the missing @deprecated Javadoc tag.(¿ÇÌìýÿÿÿÿ

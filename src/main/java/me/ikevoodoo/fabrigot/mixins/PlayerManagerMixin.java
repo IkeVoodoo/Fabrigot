@@ -1,6 +1,6 @@
 package me.ikevoodoo.fabrigot.mixins;
 
-import me.ikevoodoo.fabrigot.Data;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -30,7 +30,7 @@ public abstract class PlayerManagerMixin {
 
     @Redirect(method = "onPlayerConnect", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V"))
     private void playerJoinEvent(PlayerManager instance, Text message, boolean overlay) {
-        var event = new PlayerJoinEvent(Data.FABRIGOT_SERVER.convertPlayer(this.joiningPlayer.get()), message.getString());
+        var event = new PlayerJoinEvent(Fabrigot.getFabrigotServer().convertPlayerEntity(this.joiningPlayer.get()), message.getString());
         this.joiningPlayer.remove();
         Bukkit.getPluginManager().callEvent(event);
 
@@ -39,4 +39,5 @@ public abstract class PlayerManagerMixin {
             this.broadcast(newText, overlay);
         }
     }
+
 }

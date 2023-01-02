@@ -1,11 +1,0 @@
-
-e
-java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8ê“ƒ¥¸0
-W
-java:S1133"5Do not forget to remove this deprecated code someday.(ş¨òíúÿÿÿÿ8ê“ƒ¥¸0
-R
-java:S1133"5Do not forget to remove this deprecated code someday.(Êİóë8ì“ƒ¥¸0
->	java:S1314""Add a default case to this switch.(ÙˆÄ8í“ƒ¥¸0
->	java:S131R""Add a default case to this switch.(ÙˆÄ8î“ƒ¥¸0
-p
-java:S2975í"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(öÄÌl8ğ“ƒ¥¸0

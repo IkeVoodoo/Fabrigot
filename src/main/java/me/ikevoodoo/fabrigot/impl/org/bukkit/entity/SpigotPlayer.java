@@ -4,11 +4,9 @@ import me.ikevoodoo.fabrigot.Utils;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementProgress;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.scoreboard.Scoreboard;
-import net.minecraft.server.dedicated.command.OpCommand;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.LiteralTextContent;
-import net.minecraft.text.ScoreTextContent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.village.Merchant;
@@ -46,9 +44,9 @@ import java.util.*;
 
 public class SpigotPlayer implements Player {
 
-    private final ServerPlayerEntity player;
+    private final PlayerEntity player;
 
-    public SpigotPlayer(ServerPlayerEntity player) {
+    public SpigotPlayer(PlayerEntity player) {
         this.player = player;
     }
 
@@ -1231,9 +1229,11 @@ public class SpigotPlayer implements Player {
 
     @Override
     public @NotNull String getPlayerListName() {
-        var name = Utils.getPlain(this.player.getPlayerListName());
+        if (!(this.player instanceof ServerPlayerEntity serverPlayerEntity)) return this.getName();
 
-        return name == null ? "" : name;
+        var name = Utils.getPlain(serverPlayerEntity.getPlayerListName());
+
+        return name == null ? this.getName() : name;
     }
 
     @Override

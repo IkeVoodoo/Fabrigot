@@ -1,7 +1,7 @@
 package me.ikevoodoo.fabrigot.mixins;
 
 import com.mojang.datafixers.util.Either;
-import me.ikevoodoo.fabrigot.Data;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import me.ikevoodoo.fabrigot.Utils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -27,7 +27,7 @@ public class ServerPlayerEntityMixin {
         var result = Utils.fromSleepFailureReason(cir.getReturnValue().left().orElse(null));
 
         // TODO get block
-        var event = new PlayerBedEnterEvent(Data.FABRIGOT_SERVER.convertPlayer(player), null, result);
+        var event = new PlayerBedEnterEvent(Fabrigot.getFabrigotServer().convertPlayerEntity(player), null, result);
         Bukkit.getPluginManager().callEvent(event);
 
         if (event.isCancelled() || event.useBed() == Event.Result.DENY) {
@@ -43,7 +43,7 @@ public class ServerPlayerEntityMixin {
     private void handleWakeUpEvent(boolean skipSleepTimer, boolean updateSleepingPlayers, CallbackInfo ci) {
         var player = (ServerPlayerEntity) (Object) this;
 
-        var event = new PlayerBedLeaveEvent(Data.FABRIGOT_SERVER.convertPlayer(player), null, true);
+        var event = new PlayerBedLeaveEvent(Fabrigot.getFabrigotServer().convertPlayerEntity(player), null, true);
         Bukkit.getPluginManager().callEvent(event);
 
         if(event.isCancelled()) {
@@ -53,8 +53,7 @@ public class ServerPlayerEntityMixin {
         if (event.shouldSetSpawnLocation()) {
             // TODO
         }
+
     }
-
-
 
 }

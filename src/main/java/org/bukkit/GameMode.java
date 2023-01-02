@@ -65,6 +65,24 @@ public enum GameMode {
         return BY_ID.get(value);
     }
 
+    public net.minecraft.world.GameMode toMinecraft() {
+        return switch (this) {
+            case CREATIVE -> net.minecraft.world.GameMode.CREATIVE;
+            case SURVIVAL -> net.minecraft.world.GameMode.SURVIVAL;
+            case ADVENTURE -> net.minecraft.world.GameMode.ADVENTURE;
+            case SPECTATOR -> net.minecraft.world.GameMode.SPECTATOR;
+        };
+    }
+
+    public static GameMode fromMinecraft(net.minecraft.world.GameMode gameMode) {
+        return switch (gameMode) {
+            case SPECTATOR -> SPECTATOR;
+            case ADVENTURE -> ADVENTURE;
+            case SURVIVAL -> SURVIVAL;
+            case CREATIVE -> CREATIVE;
+        };
+    }
+
     static {
         for (GameMode mode : values()) {
             BY_ID.put(mode.getValue(), mode);

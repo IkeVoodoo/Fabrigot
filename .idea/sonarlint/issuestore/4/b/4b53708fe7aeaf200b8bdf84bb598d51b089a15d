@@ -1,9 +1,0 @@
-
-e
-java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8¬ëø¤¸0
-W
-java:S1133"5Do not forget to remove this deprecated code someday.(…‘®œûÿÿÿÿ8¬ëø¤¸0
-R
-java:S1133 "5Do not forget to remove this deprecated code someday.(º¢‹¬8­ëø¤¸0
-o
-java:S2975>"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(¾ùÍ	8®ëø¤¸0

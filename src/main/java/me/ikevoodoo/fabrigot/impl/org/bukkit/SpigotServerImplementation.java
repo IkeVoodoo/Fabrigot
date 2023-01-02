@@ -1,12 +1,12 @@
 package me.ikevoodoo.fabrigot.impl.org.bukkit;
 
-import me.ikevoodoo.fabrigot.Data;
-import me.ikevoodoo.fabrigot.api.bans.BannedIp;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import me.ikevoodoo.fabrigot.api.bans.lists.IpBanList;
 import me.ikevoodoo.fabrigot.api.bans.lists.PlayerBanList;
 import me.ikevoodoo.fabrigot.impl.org.bukkit.command.SpigotConsoleCommandSender;
 import me.ikevoodoo.fabrigot.impl.org.bukkit.scheduler.SpigotScheduler;
 import net.minecraft.loot.LootTable;
+import net.minecraft.server.MinecraftServer;
 import org.bukkit.*;
 import org.bukkit.advancement.Advancement;
 import org.bukkit.block.data.BlockData;
@@ -35,7 +35,6 @@ import java.io.File;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class SpigotServerImplementation implements Server {
 
@@ -45,28 +44,28 @@ public class SpigotServerImplementation implements Server {
     private final UnsafeValues unsafeValues;
     private final PluginManager pluginManager;
     private final SimpleCommandMap commandMap;
-    private final Thread serverThread;
+    private final MinecraftServer server;
 
     private final IpBanList ipBanList;
     private final PlayerBanList nameBanList;
     private final BukkitScheduler scheduler;
     private final Server.Spigot spigotImplementation;
-    private final ConsoleCommandSender consoleCommandSender;
+    private final ConsoleCommandSender consoleCommandServer;
 
-    public SpigotServerImplementation(Thread serverThread) {
+    public SpigotServerImplementation(MinecraftServer server) {
         this.logger = Logger.getLogger("Fabrigot | Spigot Server");
         this.unsafeValues = new SpigotUnsafeValuesImplementation();
         this.commandMap = new SimpleCommandMap(this);
         this.pluginManager = new SimplePluginManager(this, this.commandMap);
-        this.serverThread = serverThread;
+        this.server = server;
 
-        this.ipBanList = new IpBanList(Data.SERVER.getPlayerManager().getIpBanList());
-        this.nameBanList = new PlayerBanList(Data.SERVER.getPlayerManager().getUserBanList());
+        this.ipBanList = new IpBanList(server.getPlayerManager().getIpBanList());
+        this.nameBanList = new PlayerBanList(server.getPlayerManager().getUserBanList());
 
         this.scheduler = new SpigotScheduler();
         this.spigotImplementation = new SpigotImplementation(this);
 
-        this.consoleCommandSender = new SpigotConsoleCommandSender();
+        this.consoleCommandServer = new SpigotConsoleCommandSender(server.getCommandSource());
     }
 
     @Override
@@ -76,7 +75,7 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public @NotNull String getVersion() {
-        return Data.FABRIGOT_SERVER.getVersion();
+        return Fabrigot.getFabrigotServer().getVersion();
     }
 
     @Override
@@ -86,27 +85,27 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public @NotNull Collection<? extends Player> getOnlinePlayers() {
-        return Data.FABRIGOT_SERVER.getOnlinePlayers();
+        return Fabrigot.getFabrigotServer().getOnlinePlayers();
     }
 
     @Override
     public int getMaxPlayers() {
-        return 0;
+        return this.server.getMaxPlayerCount();
     }
 
     @Override
     public int getPort() {
-        return 0;
+        return this.server.getServerPort();
     }
 
     @Override
     public int getViewDistance() {
-        return 0;
+        return this.server.getPlayerManager().getViewDistance();
     }
 
     @Override
     public @NotNull String getIp() {
-        return null;
+        return this.server.getServerIp();
     }
 
     @Override
@@ -177,7 +176,7 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public @NotNull File getUpdateFolderFile() {
-        return new File(Data.SERVER_HOME, "plugins/update");
+        return new File(Fabrigot.getServerHome(), "plugins" + File.separator + "update");
     }
 
     @Override
@@ -217,22 +216,23 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public @Nullable Player getPlayer(@NotNull String name) {
-        return Data.FABRIGOT_SERVER.convertPlayer(Data.FABRIGOT_SERVER.findPlayer(name));
+        return null;
     }
 
     @Override
     public @Nullable Player getPlayerExact(@NotNull String name) {
-        return Data.FABRIGOT_SERVER.convertPlayer(Data.FABRIGOT_SERVER.findPlayerExact(name));
+        return null;
     }
 
     @Override
     public @NotNull List<Player> matchPlayer(@NotNull String name) {
-        return List.of();
+        return null;
     }
 
     @Override
     public @Nullable Player getPlayer(@NotNull UUID id) {
-        return Data.FABRIGOT_SERVER.convertPlayer(Data.FABRIGOT_SERVER.getPlayer(id));
+        //return Data.FABRIGOT_SERVER.getSpigotPlayer(id);
+        return null;
     }
 
     @Override
@@ -410,19 +410,12 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public void shutdown() {
-        Data.SERVER.shutdown();
+
     }
 
     @Override
     public int broadcast(@NotNull String message, @NotNull String permission) {
-        var count = 0;
-        for (var player : getOnlinePlayers()) {
-            if (player.hasPermission(permission)) {
-                count++;
-                player.sendMessage(message);
-            }
-        }
-        return count;
+        return 0;
     }
 
     @Override
@@ -437,11 +430,7 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public @NotNull Set<String> getIPBans() {
-        return Data.FABRIGOT_SERVER.getBannedIps()
-                .values()
-                .stream()
-                .map(BannedIp::getKey)
-                .collect(Collectors.toSet());
+        return null;
     }
 
     @Override
@@ -471,22 +460,22 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public @NotNull GameMode getDefaultGameMode() {
-        return GameMode.valueOf(Data.SERVER.getDefaultGameMode().name());
+        return GameMode.fromMinecraft(Fabrigot.getMinecraftServer().getDefaultGameMode());
     }
 
     @Override
     public void setDefaultGameMode(@NotNull GameMode mode) {
-        Data.SERVER.setDefaultGameMode(net.minecraft.world.GameMode.valueOf(mode.name()));
+        Fabrigot.getMinecraftServer().setDefaultGameMode(mode.toMinecraft());
     }
 
     @Override
     public @NotNull ConsoleCommandSender getConsoleSender() {
-        return this.consoleCommandSender;
+        return this.consoleCommandServer;
     }
 
     @Override
     public @NotNull File getWorldContainer() {
-        return Data.SERVER_HOME;
+        return Fabrigot.getServerHome();
     }
 
     @Override
@@ -561,17 +550,17 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public boolean isPrimaryThread() {
-        return Thread.currentThread() == this.serverThread;
+        return Thread.currentThread() == this.server.getThread();
     }
 
     @Override
     public @NotNull String getMotd() {
-        return null;
+        return this.server.getServerMotd();
     }
 
     @Override
     public @Nullable String getShutdownMessage() {
-        return null;
+        return "";
     }
 
     @Override
@@ -606,12 +595,12 @@ public class SpigotServerImplementation implements Server {
 
     @Override
     public void setIdleTimeout(int threshold) {
-
+        this.server.setPlayerIdleTimeout(threshold);
     }
 
     @Override
     public int getIdleTimeout() {
-        return 0;
+        return this.server.getPlayerIdleTimeout();
     }
 
     @NotNull

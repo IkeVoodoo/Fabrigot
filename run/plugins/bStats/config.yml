@@ -4,7 +4,7 @@
 # performance penalty associated with having metrics enabled, and data sent to bStats is fully
 # anonymous.
 enabled: true
-serverUuid: c0899df2-9bc2-4674-8771-b977b8b7bbc1
+serverUuid: b99d39d4-bb41-42f9-9965-969732213913
 logFailedRequests: false
 logSentData: false
 logResponseStatusText: false

@@ -1,9 +1,10 @@
 package me.ikevoodoo.fabrigot.mixins;
 
-import me.ikevoodoo.fabrigot.Data;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import net.minecraft.network.message.DecoratedContents;
 import net.minecraft.network.message.MessageType;
 import net.minecraft.network.message.SignedMessage;
+import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
@@ -28,21 +29,11 @@ public abstract class ServerPlayNetworkHandlerMixin {
 
     @Shadow public ServerPlayerEntity player;
 
+    @Shadow protected abstract SignedMessage getSignedMessage(ChatMessageC2SPacket packet);
+
     @Shadow @Final private MinecraftServer server;
 
     @Shadow protected abstract void checkForSpam();
-
-    @Shadow public abstract ServerPlayerEntity getPlayer();
-
-    @Redirect(method = "onDisconnected", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V"))
-    private void playerDisconnected(PlayerManager instance, Text message, boolean overlay) {
-        var event = new PlayerQuitEvent(Data.FABRIGOT_SERVER.convertPlayer(this.player), message.getString());
-        Bukkit.getPluginManager().callEvent(event);
-        if (event.getQuitMessage() != null && !event.getQuitMessage().isBlank()) {
-            var newText = Text.literal(event.getQuitMessage());
-            this.server.getPlayerManager().broadcast(newText, overlay);
-        }
-    }
 
     @Inject(method = "handleDecoratedMessage", at = @At("HEAD"), cancellable = true)
     private void handleMessage(SignedMessage message, CallbackInfo ci) {
@@ -51,7 +42,7 @@ public abstract class ServerPlayNetworkHandlerMixin {
 
             var event = new AsyncPlayerChatEvent(
                     true,
-                    Data.FABRIGOT_SERVER.convertPlayer(this.player),
+                    Fabrigot.getFabrigotServer().convertPlayerEntity(this.player),
                     original,
                     new HashSet<>(Bukkit.getOnlinePlayers())
             );
@@ -71,6 +62,16 @@ public abstract class ServerPlayNetworkHandlerMixin {
             this.checkForSpam();
         });
         ci.cancel();
+    }
+
+    @Redirect(method = "onDisconnected", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V"))
+    private void playerDisconnected(PlayerManager instance, Text message, boolean overlay) {
+        var event = new PlayerQuitEvent(Fabrigot.getFabrigotServer().convertPlayerEntity(this.player), message.getString());
+        Bukkit.getPluginManager().callEvent(event);
+        if (event.getQuitMessage() != null && !event.getQuitMessage().isBlank()) {
+            var newText = Text.literal(event.getQuitMessage());
+            this.server.getPlayerManager().broadcast(newText, overlay);
+        }
     }
 
 }

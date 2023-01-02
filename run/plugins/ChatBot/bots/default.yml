@@ -30,7 +30,7 @@ events:
  playerquit:
   - "Goodbye %player_name%!"
   
-#Valid sentences the bot will respond to, make sure to always use lowercase
+#Valid sentences the bot will response to, make sure to always use lowercase
 #You must escape any " characters (i.e. instead of """ it would be "\"") or use ' instead
 responses:
  spawn:

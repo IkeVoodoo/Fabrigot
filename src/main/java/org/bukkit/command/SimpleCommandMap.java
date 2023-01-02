@@ -1,6 +1,6 @@
 package org.bukkit.command;
 
-import me.ikevoodoo.fabrigot.Data;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.Location;
 import org.bukkit.Server;
@@ -110,7 +110,7 @@ public class SimpleCommandMap implements CommandMap {
         }
         knownCommands.put(label, command);
 
-        Data.FABRIGOT_SERVER.getCommandRegister().registerSpigot(
+        Fabrigot.getFabrigotServer().getCommandRegister().registerSpigot(
                 label,
                 command,
                 command instanceof PluginCommand pluginCommand

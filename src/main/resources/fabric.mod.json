@@ -10,10 +10,10 @@
   "contact": {},
   "license": "MIT",
   "icon": "assets/fabrigot/icon.png",
-  "environment": "server",
+  "environment": "*",
   "entrypoints": {
-    "server": [
-      "me.ikevoodoo.fabrigot.FabrigotServer"
+    "main": [
+      "me.ikevoodoo.fabrigot.Fabrigot"
     ]
   },
   "mixins": [

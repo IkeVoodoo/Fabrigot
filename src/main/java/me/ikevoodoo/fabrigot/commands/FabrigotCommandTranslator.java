@@ -1,22 +1,16 @@
 package me.ikevoodoo.fabrigot.commands;
 
-import me.ikevoodoo.fabrigot.api.FabrigotServer;
+import me.ikevoodoo.fabrigot.Fabrigot;
 import net.minecraft.command.CommandSource;
 import net.minecraft.server.command.ServerCommandSource;
 import org.bukkit.command.CommandSender;
 
 public final class FabrigotCommandTranslator {
 
-    private final FabrigotServer fabrigotServer;
-
-    public FabrigotCommandTranslator(FabrigotServer fabrigotServer) {
-        this.fabrigotServer = fabrigotServer;
-    }
-
     public CommandSender toSpigot(CommandSource source) {
         if (source instanceof ServerCommandSource serverCommandSource) {
             if (serverCommandSource.isExecutedByPlayer()) {
-                return this.fabrigotServer.convertPlayer(serverCommandSource.getPlayer());
+                return Fabrigot.getFabrigotServer().convertPlayerEntity(serverCommandSource.getPlayer());
             }
 
 //            Entity entity = serverCommandSource.getEntity();

@@ -1,13 +1,16 @@
 package me.ikevoodoo.fabrigot.events;
 
+import me.ikevoodoo.fabrigot.events.EventConsumer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.minecraft.server.MinecraftServer;
+
 import java.util.HashSet;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Set;
 
 public class Event<T> {
 
-    private final List<EventConsumer<T>> listeners = new CopyOnWriteArrayList<>();
-    private final List<EventConsumer<T>> callbacks = new CopyOnWriteArrayList<>();
+    private final Set<EventConsumer<T>> listeners = new HashSet<>();
+    private final Set<EventConsumer<T>> callbacks = new HashSet<>();
 
     public void addListener(final EventConsumer<T> consumer) {
         this.listeners.add(consumer);

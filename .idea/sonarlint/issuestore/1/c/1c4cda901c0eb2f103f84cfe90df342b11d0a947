@@ -1,15 +1,0 @@
-
-{
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ä¯ÔÃÿÿÿÿÿ8ÜÚù¤¸0
-e
-java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8àÚù¤¸0
-R
-java:S1133"5Do not forget to remove this deprecated code someday.(áÙÜ¶8áÚù¤¸0
-R
-java:S1133,"5Do not forget to remove this deprecated code someday.(‘Ûí¡8çÚù¤¸0
-Q
-java:S1133R"5Do not forget to remove this deprecated code someday.(Üˆú8èÚù¤¸0
-R
-java:S1133]"5Do not forget to remove this deprecated code someday.(×àò·8èÚù¤¸0
-p
-java:S2975b"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(£åŸ÷8éÚù¤¸0
