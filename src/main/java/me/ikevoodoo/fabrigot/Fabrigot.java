@@ -20,13 +20,11 @@ public class Fabrigot implements ModInitializer {
     private static File SERVER_HOME;
     private static MinecraftServer MINECRAFT_SERVER;
 
-    private static CommandDispatcher<ServerCommandSource> dispatcher;
+    private static CommandDispatcher<ServerCommandSource> COMMAND_DISPATCHER;
 
     @Override
     public void onInitialize() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, registrationEnvironment) -> {
-            Fabrigot.dispatcher = dispatcher;
-        });
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, registrationEnvironment) -> Fabrigot.COMMAND_DISPATCHER = dispatcher);
     }
 
     public static FabrigotServer getFabrigotServer() {
@@ -41,12 +39,16 @@ public class Fabrigot implements ModInitializer {
         return MINECRAFT_SERVER;
     }
 
+    public static CommandDispatcher<ServerCommandSource> getCommandDispatcher() {
+        return COMMAND_DISPATCHER;
+    }
+
     public static void postWorld() {
         enable(Bukkit.getPluginManager().getPlugins(), PluginLoadOrder.POSTWORLD);
     }
 
     public static void serverStarted(MinecraftServer server) {
-        FABRIGOT_SERVER = new VanillaFabrigotServer(server, dispatcher);
+        FABRIGOT_SERVER = new VanillaFabrigotServer(server, COMMAND_DISPATCHER);
         SERVER_HOME = server.getRunDirectory();
         MINECRAFT_SERVER = server;
 
