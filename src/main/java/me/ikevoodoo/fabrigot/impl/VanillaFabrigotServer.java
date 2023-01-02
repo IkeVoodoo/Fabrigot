@@ -15,7 +15,9 @@ import net.minecraft.server.dedicated.MinecraftDedicatedServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -24,11 +26,14 @@ public class VanillaFabrigotServer implements FabrigotServer {
     private final MinecraftDedicatedServer server;
     private final CommandDispatcher<ServerCommandSource> dispatcher;
     private final FabrigotCommandRegister fabrigotCommandRegister;
+    private final Map<UUID, Player> playerMap;
 
     public VanillaFabrigotServer(MinecraftDedicatedServer server, CommandDispatcher<ServerCommandSource> dispatcher) {
         this.server = server;
         this.dispatcher = dispatcher;
         this.fabrigotCommandRegister = new FabrigotCommandRegister(dispatcher, new FabrigotCommandTranslator(this));
+
+        this.playerMap = new HashMap<>();
     }
 
     @Override
@@ -82,22 +87,53 @@ public class VanillaFabrigotServer implements FabrigotServer {
     }
 
     @Override
-    public ServerPlayerEntity findPlayer(String target) {
-        try {
-            return this.server.getPlayerManager().getPlayer(UUID.fromString(target));
-        } catch (IllegalArgumentException e) {
-            return this.server.getPlayerManager().getPlayer(target);
-        }
+    public ServerPlayerEntity getPlayer(UUID id) {
+        return this.server.getPlayerManager().getPlayer(id);
     }
 
     @Override
-    public Player getPlayer(ServerPlayerEntity entity) {
-        return new SpigotPlayer(entity);
+    public ServerPlayerEntity findPlayer(String target) {
+        try {
+            return this.getPlayer(UUID.fromString(target));
+        } catch (IllegalArgumentException e) {
+            var lower = target.toLowerCase();
+            for (ServerPlayerEntity serverPlayerEntity : server.getPlayerManager().getPlayerList()) {
+                if (!serverPlayerEntity.getGameProfile().getName().equals(target)) continue;
+                if (!serverPlayerEntity.getGameProfile().getName().toLowerCase().startsWith(lower)) continue;
+                return serverPlayerEntity;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public ServerPlayerEntity findPlayerExact(String target) {
+        try {
+            return this.getPlayer(UUID.fromString(target));
+        } catch (IllegalArgumentException e) {
+            for (ServerPlayerEntity serverPlayerEntity : server.getPlayerManager().getPlayerList()) {
+                if (!serverPlayerEntity.getGameProfile().getName().equals(target)) continue;
+                return serverPlayerEntity;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public Player convertPlayer(ServerPlayerEntity entity) {
+        return this.playerMap.computeIfAbsent(entity.getUuid(), id -> new SpigotPlayer(entity));
     }
 
     @Override
     public List<Player> getOnlinePlayers() {
-        return this.server.getPlayerManager().getPlayerList().stream().map(this::getPlayer).toList();
+        return this.playerMap.values().stream().toList();
+    }
+
+    @Override
+    public void playerDisconnected(ServerPlayerEntity entity) {
+        this.playerMap.remove(entity.getUuid());
     }
 
     @Override

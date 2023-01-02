@@ -1,0 +1,6 @@
+v1	named	intermediary
+FIELD	me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin	Lnet/minecraft/server/network/ServerPlayerEntity;	player	field_14140
+FIELD	me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin	Lnet/minecraft/server/MinecraftServer;	server	field_14148
+METHOD	me/ikevoodoo/fabrigot/mixins/PlayerManagerMixin	(Lnet/minecraft/text/Text;Z)V	broadcast	method_43514
+METHOD	me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin	()V	checkForSpam	method_43669
+METHOD	me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin	()Lnet/minecraft/server/network/ServerPlayerEntity;	getPlayer	method_32311

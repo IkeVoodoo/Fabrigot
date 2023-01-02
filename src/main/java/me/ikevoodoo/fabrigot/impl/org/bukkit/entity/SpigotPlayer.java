@@ -267,22 +267,22 @@ public class SpigotPlayer implements Player {
 
     @Override
     public double getHealth() {
-        return 0;
+        return this.player.getHealth();
     }
 
     @Override
     public void setHealth(double health) {
-
+        this.player.setHealth((float) health);
     }
 
     @Override
     public double getAbsorptionAmount() {
-        return 0;
+        return this.player.getAbsorptionAmount();
     }
 
     @Override
     public void setAbsorptionAmount(double amount) {
-
+        this.player.setAbsorptionAmount((float) amount);
     }
 
     @Override

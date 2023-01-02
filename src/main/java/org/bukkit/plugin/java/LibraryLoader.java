@@ -35,6 +35,8 @@ public class LibraryLoader {
             dependencySet = dependencySet.and(library);
         }
 
+        dependencySet = dependencySet.and("org.apache.commons:commons-lang3:3.12.0");
+
         JkResolveResult resolveResult = resolver.resolve(dependencySet);
         JkResolveResult.JkErrorReport report = resolveResult.getErrorReport();
         if (report.hasErrors()) {

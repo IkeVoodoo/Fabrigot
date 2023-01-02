@@ -1,0 +1,13 @@
+
+e
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8ø­¤¥¸0
+R
+java:S1133"5Do not forget to remove this deprecated code someday.(ã¢ÿ8ø­¤¥¸0
+W
+java:S1133"5Do not forget to remove this deprecated code someday.(¯“ÂĞúÿÿÿÿ8ù­¤¥¸0
+W
+java:S1133#"5Do not forget to remove this deprecated code someday.(×Šïúÿÿÿÿ8ú­¤¥¸0
+f
+java:S3358;"DExtract this nested ternary operation into an independent statement.(µ‡ßÄùÿÿÿÿ8ú­¤¥¸0
+p
+java:S2975?"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(‚‚µÈ8ú­¤¥¸0

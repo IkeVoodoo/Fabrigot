@@ -16,7 +16,7 @@ public final class FabrigotCommandTranslator {
     public CommandSender toSpigot(CommandSource source) {
         if (source instanceof ServerCommandSource serverCommandSource) {
             if (serverCommandSource.isExecutedByPlayer()) {
-                return this.fabrigotServer.getPlayer(serverCommandSource.getPlayer());
+                return this.fabrigotServer.convertPlayer(serverCommandSource.getPlayer());
             }
 
 //            Entity entity = serverCommandSource.getEntity();

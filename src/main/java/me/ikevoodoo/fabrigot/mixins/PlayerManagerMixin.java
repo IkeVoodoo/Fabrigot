@@ -30,13 +30,13 @@ public abstract class PlayerManagerMixin {
 
     @Redirect(method = "onPlayerConnect", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V"))
     private void playerJoinEvent(PlayerManager instance, Text message, boolean overlay) {
-        var event = new PlayerJoinEvent(Data.FABRIGOT_SERVER.getPlayer(this.joiningPlayer.get()), message.getString());
+        var event = new PlayerJoinEvent(Data.FABRIGOT_SERVER.convertPlayer(this.joiningPlayer.get()), message.getString());
         this.joiningPlayer.remove();
         Bukkit.getPluginManager().callEvent(event);
+
         if (event.getJoinMessage() != null && !event.getJoinMessage().isBlank()) {
             var newText = Text.literal(event.getJoinMessage());
             this.broadcast(newText, overlay);
         }
     }
-
 }

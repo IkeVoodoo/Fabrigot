@@ -1,0 +1,11 @@
+
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ä¯ÔÃÿÿÿÿÿ8ı˜¥¸0
+e
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8ı˜¥¸0
+R
+java:S1133"5Do not forget to remove this deprecated code someday.(ü®¦Ä8ı˜¥¸0
+R
+java:S1133)"5Do not forget to remove this deprecated code someday.(øÿèİ8”ı˜¥¸0
+p
+java:S29753"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(ÁÁ˜¨8”ı˜¥¸0

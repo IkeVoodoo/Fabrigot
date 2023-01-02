@@ -7,7 +7,7 @@ import net.minecraft.server.command.ServerCommandSource;
 import org.bukkit.command.Command;
 import org.bukkit.command.TabCompleter;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 import static com.mojang.brigadier.arguments.StringArgumentType.greedyString;
 import static net.minecraft.server.command.CommandManager.argument;
@@ -54,7 +54,9 @@ public final class FabrigotCommandRegister {
                                 return builder.buildFuture();
                             }
 
-                            builder.createOffset(args.length);
+                            var size = builder.getInput().trim().length() + args.length - 1;
+
+                            builder = builder.createOffset(size);
                             list.forEach(builder::suggest);
                             return builder.buildFuture();
                         })
@@ -75,12 +77,21 @@ public final class FabrigotCommandRegister {
     }
 
     private int execute(final Command command, CommandSource source, String... args) {
-        boolean success = command.execute(
-            this.translator.toSpigot(source),
-            command.getLabel(),
-            args
-        );
+        System.out.println("Executing with args: " + Arrays.toString(args));
+        try {
+            boolean success = command.execute(
+                    this.translator.toSpigot(source),
+                    command.getLabel(),
+                    args
+            );
 
-        return success ? 1 : 0;
+            System.out.println("Success: " + success);
+
+            return success ? 1 : 0;
+        } catch(Throwable throwable) {
+            throwable.printStackTrace();
+
+            return 0;
+        }
     }
 }

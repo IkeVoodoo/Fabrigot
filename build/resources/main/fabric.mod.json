@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "fabrigot",
+  "version": "1.0",
+  "name": "Fabrigot",
+  "description": "Spigot but Fabric",
+  "authors": [
+    "IkeVoodoo"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/fabrigot/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "server": [
+      "me.ikevoodoo.fabrigot.FabrigotServer"
+    ]
+  },
+  "mixins": [
+    "fabrigot.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric": "*",
+    "minecraft": "1.19.2"
+  }
+}

@@ -1,0 +1,87 @@
+# __________        __    __                           # Butter (not better)
+# \______   \__ ___/  |__/  |_  ___________
+# |    |  _/  |  \   __\   __\/ __ \_  __ \
+# |    |   \  |  /|  |  |  | \  ___/|  | \/
+# |______  /____/ |__|  |__|  \___  >__|
+# \/                       \/
+# __      __.__    .__  __         .__  .__          __
+# /  \    /  \  |__ |__|/  |_  ____ |  | |__| _______/  |_
+# \   \/\/   /  |  \|  \   __\/ __ \|  | |  |/  ___/\   __\
+# \        /|   Y  \  ||  | \  ___/|  |_|  |\___ \  |  |
+#  \__/\  / |___|  /__||__|  \___  >____/__/____  > |__|
+#   \/       \/              \/             \/
+
+# - TIME
+
+# Examples:
+# yyyy-MM-dd 	    "1988-09-29"
+# dd/MM/yyyy 	    "29/09/1988"
+# dd-MMM-yyyy 	    "29-Sep-1988"
+# E, MMM dd yyyy 	"Thu, Sep 29 1988"
+date-format: "yyyy-MM-dd HH:mm:ss"
+add-hours: 0
+# https://en.wikipedia.org/wiki/IETF_language_tag#List_of_common_primary_language_subtags
+locale: "en"
+
+# - CONFIG
+check-for-updates: true
+
+kick-online-players: true
+op-bypass: true
+
+# Custom icon will be used if the whitelist is enabled.
+custom-server-icon: false
+# ./plugins/ButterWhitelist/{filename}
+# Icon format must be .png
+custom-server-icon-file-name: "my-icon.png"
+
+# <RAINBOW[NUMBER]>{TEXT}</RAINBOW>
+# <GRADIENT:[HEX]>{TEXT}</GRADIENT:[HEX]>
+# <SOLID:[HEX]>{TEXT}
+
+custom-server-MOTD: true
+# {player} - get player name.
+motd:
+  - "<RAINBOW1>Server name!</RAINBOW>"
+  - "&cWhitelist enabled."
+
+kick-message:
+  - "&c{player},"
+  - "<GRADIENT:F0F0F0>You are not whitelisted!</GRADIENT:0F0F0F>"
+  - "&cPlease, try again later."
+  - ""
+  - "&fContact us:"
+  - "&eminecraftserver.net"
+
+custom-max-players: true
+max-players-value: -1
+
+# - MESSAGES
+
+notEnoughPermissions: "&cNot enough permissions."
+whitelistEnabled: "&aWhitelist successfully enabled."
+whitelistDisabled: "&cWhitelist successfully disabled."
+alreadyInWhitelist: "&cPlayer &f{player} &cis already in whitelist."
+addToWhitelist: "&aPlayer &f{player} &ahas been added to the whitelist."
+removeFromWhitelist: "&aPlayer &f{player} &ahas been removed from the whitelist."
+unknownSubcommand: "&cUnknown subcommand."
+noArgs: "&cYou must specify one more argument."
+notWhitelisted: "&cSpecified player is not whitelisted."
+configReloaded: "&aReloaded."
+
+removeFromWhitelistGUI: "RMB - remove this player from whitelist."
+getExtraInfo: "LMB - get more information about this player."
+addedBy: "&fAdded by: &e{player}"
+addedWhen: "&fTime: &b{date}"
+listTitle: "Whitelist"
+playerInfoTitle: "Player info >"
+
+invalidPage: "&cInvalid page."
+onlyNumbers: "&cUnknown page."
+
+# Done |
+#     \/
+Done: "&aDone!"
+#      /\
+# Done |
+

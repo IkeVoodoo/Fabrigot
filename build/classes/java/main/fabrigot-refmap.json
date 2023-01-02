@@ -1,0 +1,84 @@
+{
+  "mappings": {
+    "me/ikevoodoo/fabrigot/mixins/ServerCommandSourceAccessor": {
+      "output": "field_9819:Lnet/minecraft/class_2165;"
+    },
+    "me/ikevoodoo/fabrigot/mixins/ClientConnectionMixin": {
+      "handlePacket": "Lnet/minecraft/class_2535;method_10759(Lnet/minecraft/class_2596;Lnet/minecraft/class_2547;)V",
+      "sendInternal": "Lnet/minecraft/class_2535;method_36942(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;Lnet/minecraft/class_2539;Lnet/minecraft/class_2539;)V"
+    },
+    "me/ikevoodoo/fabrigot/mixins/BucketItemMixin": {
+      "Lnet/minecraft/item/BucketItem;placeFluid(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/hit/BlockHitResult;)Z": "Lnet/minecraft/class_1755;method_7731(Lnet/minecraft/class_1657;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_3965;)Z",
+      "use": "Lnet/minecraft/class_1755;method_7836(Lnet/minecraft/class_1937;Lnet/minecraft/class_1657;Lnet/minecraft/class_1268;)Lnet/minecraft/class_1271;"
+    },
+    "me/ikevoodoo/fabrigot/mixins/GameRulesAccessor": {
+      "setValue": "method_27321(Lnet/minecraft/class_1928$class_4313;Lnet/minecraft/class_1928;Lnet/minecraft/server/MinecraftServer;)V"
+    },
+    "me/ikevoodoo/fabrigot/mixins/ServerPlayerEntityMixin": {
+      "trySleep": "Lnet/minecraft/class_3222;method_7269(Lnet/minecraft/class_2338;)Lcom/mojang/datafixers/util/Either;",
+      "Lnet/minecraft/server/world/ServerChunkManager;sendToNearbyPlayers(Lnet/minecraft/entity/Entity;Lnet/minecraft/network/Packet;)V": "Lnet/minecraft/class_3215;method_18751(Lnet/minecraft/class_1297;Lnet/minecraft/class_2596;)V",
+      "wakeUp": "Lnet/minecraft/class_3222;method_7358(ZZ)V"
+    },
+    "me/ikevoodoo/fabrigot/mixins/MinecraftServerMixin": {
+      "createWorlds": "Lnet/minecraft/server/MinecraftServer;method_3786(Lnet/minecraft/class_3949;)V"
+    },
+    "me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin": {
+      "handleDecoratedMessage": "Lnet/minecraft/class_3244;method_44155(Lnet/minecraft/class_7471;)V",
+      "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V": "Lnet/minecraft/class_3324;method_43514(Lnet/minecraft/class_2561;Z)V",
+      "onDisconnected": "Lnet/minecraft/class_3244;method_10839(Lnet/minecraft/class_2561;)V"
+    },
+    "me/ikevoodoo/fabrigot/mixins/MinecraftDedicatedServerMixin": {
+      "setupServer": "Lnet/minecraft/class_3176;method_3823()Z",
+      "Lnet/minecraft/server/dedicated/MinecraftDedicatedServer;setPlayerManager(Lnet/minecraft/server/PlayerManager;)V": "Lnet/minecraft/class_3176;method_3846(Lnet/minecraft/class_3324;)V"
+    },
+    "me/ikevoodoo/fabrigot/mixins/PlayerManagerMixin": {
+      "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V": "Lnet/minecraft/class_3324;method_43514(Lnet/minecraft/class_2561;Z)V",
+      "onPlayerConnect": "Lnet/minecraft/class_3324;method_14570(Lnet/minecraft/class_2535;Lnet/minecraft/class_3222;)V"
+    },
+    "me/ikevoodoo/fabrigot/mixins/ServerConfigEntryAccessor": {
+      "getKey": "method_14626()Ljava/lang/Object;"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "me/ikevoodoo/fabrigot/mixins/ServerCommandSourceAccessor": {
+        "output": "field_9819:Lnet/minecraft/class_2165;"
+      },
+      "me/ikevoodoo/fabrigot/mixins/ClientConnectionMixin": {
+        "handlePacket": "Lnet/minecraft/class_2535;method_10759(Lnet/minecraft/class_2596;Lnet/minecraft/class_2547;)V",
+        "sendInternal": "Lnet/minecraft/class_2535;method_36942(Lnet/minecraft/class_2596;Lnet/minecraft/class_7648;Lnet/minecraft/class_2539;Lnet/minecraft/class_2539;)V"
+      },
+      "me/ikevoodoo/fabrigot/mixins/BucketItemMixin": {
+        "Lnet/minecraft/item/BucketItem;placeFluid(Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/hit/BlockHitResult;)Z": "Lnet/minecraft/class_1755;method_7731(Lnet/minecraft/class_1657;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_3965;)Z",
+        "use": "Lnet/minecraft/class_1755;method_7836(Lnet/minecraft/class_1937;Lnet/minecraft/class_1657;Lnet/minecraft/class_1268;)Lnet/minecraft/class_1271;"
+      },
+      "me/ikevoodoo/fabrigot/mixins/GameRulesAccessor": {
+        "setValue": "method_27321(Lnet/minecraft/class_1928$class_4313;Lnet/minecraft/class_1928;Lnet/minecraft/server/MinecraftServer;)V"
+      },
+      "me/ikevoodoo/fabrigot/mixins/ServerPlayerEntityMixin": {
+        "trySleep": "Lnet/minecraft/class_3222;method_7269(Lnet/minecraft/class_2338;)Lcom/mojang/datafixers/util/Either;",
+        "Lnet/minecraft/server/world/ServerChunkManager;sendToNearbyPlayers(Lnet/minecraft/entity/Entity;Lnet/minecraft/network/Packet;)V": "Lnet/minecraft/class_3215;method_18751(Lnet/minecraft/class_1297;Lnet/minecraft/class_2596;)V",
+        "wakeUp": "Lnet/minecraft/class_3222;method_7358(ZZ)V"
+      },
+      "me/ikevoodoo/fabrigot/mixins/MinecraftServerMixin": {
+        "createWorlds": "Lnet/minecraft/server/MinecraftServer;method_3786(Lnet/minecraft/class_3949;)V"
+      },
+      "me/ikevoodoo/fabrigot/mixins/ServerPlayNetworkHandlerMixin": {
+        "handleDecoratedMessage": "Lnet/minecraft/class_3244;method_44155(Lnet/minecraft/class_7471;)V",
+        "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V": "Lnet/minecraft/class_3324;method_43514(Lnet/minecraft/class_2561;Z)V",
+        "onDisconnected": "Lnet/minecraft/class_3244;method_10839(Lnet/minecraft/class_2561;)V"
+      },
+      "me/ikevoodoo/fabrigot/mixins/MinecraftDedicatedServerMixin": {
+        "setupServer": "Lnet/minecraft/class_3176;method_3823()Z",
+        "Lnet/minecraft/server/dedicated/MinecraftDedicatedServer;setPlayerManager(Lnet/minecraft/server/PlayerManager;)V": "Lnet/minecraft/class_3176;method_3846(Lnet/minecraft/class_3324;)V"
+      },
+      "me/ikevoodoo/fabrigot/mixins/PlayerManagerMixin": {
+        "Lnet/minecraft/server/PlayerManager;broadcast(Lnet/minecraft/text/Text;Z)V": "Lnet/minecraft/class_3324;method_43514(Lnet/minecraft/class_2561;Z)V",
+        "onPlayerConnect": "Lnet/minecraft/class_3324;method_14570(Lnet/minecraft/class_2535;Lnet/minecraft/class_3222;)V"
+      },
+      "me/ikevoodoo/fabrigot/mixins/ServerConfigEntryAccessor": {
+        "getKey": "method_14626()Ljava/lang/Object;"
+      }
+    }
+  }
+}

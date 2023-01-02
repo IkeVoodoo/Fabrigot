@@ -1,0 +1,13 @@
+
+`
+java:S3034i">Prevent "int" promotion by adding "& 0xff" to this expression.(«Žœòüÿÿÿÿ8ñø“¥¸0
+e
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8öø“¥¸0
+W
+java:S1133"5Do not forget to remove this deprecated code someday.(¹¯á×üÿÿÿÿ8öø“¥¸0
+W
+java:S1133W"5Do not forget to remove this deprecated code someday.(×žÙËþÿÿÿÿ8ùø“¥¸0
+N
+java:S4524¡"+Move this default to the end of the switch.(Ý–Ò˜ÿÿÿÿÿ8ûø“¥¸0
+v
+java:S2975µ"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(×ì¢Ëÿÿÿÿÿ8ûø“¥¸0

@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import net.minecraft.block.*;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.block.Dispenser;
 import org.bukkit.block.data.*;
@@ -9710,7 +9711,7 @@ public enum Material implements Keyed {
      */
     @NotNull
     public Optional<Item> asMinecraftItem() {
-        return net.minecraft.util.registry.Registry.ITEM.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
+        return Registry.ITEM.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
     }
 
 
@@ -9721,7 +9722,15 @@ public enum Material implements Keyed {
      */
     @NotNull
     public Optional<Block> asMinecraftBlock() {
-        return net.minecraft.util.registry.Registry.BLOCK.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
+        return Registry.BLOCK.getOrEmpty(new Identifier(this.name().toLowerCase(Locale.ROOT)));
+    }
+
+    public static Material fromMinecraftItem(Item item) {
+        return Material.valueOf(Registry.ITEM.getId(item).getPath().toUpperCase(Locale.ROOT));
+    }
+
+    public static Material fromMinecraftBlock(Block block) {
+        return Material.valueOf(Registry.BLOCK.getId(block).getPath().toUpperCase(Locale.ROOT));
     }
 
 }

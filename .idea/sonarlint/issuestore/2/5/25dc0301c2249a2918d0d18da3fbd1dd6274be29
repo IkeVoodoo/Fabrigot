@@ -1,0 +1,15 @@
+
+e
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8Ö…·£¸0
+R
+java:S1133"5Do not forget to remove this deprecated code someday.(ñÈªã8Ö…·£¸0
+R
+java:S1133#"5Do not forget to remove this deprecated code someday.(‚›ÓÏ8×…·£¸0
+X
+java:S1133©"5Do not forget to remove this deprecated code someday.(þ×Áâøÿÿÿÿ8Ù…·£¸0
+X
+java:S1133ñ"5Do not forget to remove this deprecated code someday.( ¤÷Áûÿÿÿÿ8Û…·£¸0
+>
+java:S2437†" Remove this silly bit operation.(ø€¿Ò8Ü…·£¸0
+v
+java:S2975Ä"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(Ùü‡‰üÿÿÿÿ8Ý…·£¸0

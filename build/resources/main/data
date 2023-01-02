@@ -1,0 +1,14 @@
+1.668 Bukkit classes
+26    Classes completed (1.55%)
+
+CAPABLE OF LOADING: FALSE
+
+Completed class list:
+  - Art
+  - Axis
+  - BanEntry
+  - BanList
+    - BanList.Type
+  - BlockChangeDelegate
+  - Keyed
+  - NamespacedKey

@@ -1,5 +1,7 @@
 package org.bukkit.inventory;
 
+import net.minecraft.util.Hand;
+
 public enum EquipmentSlot {
 
     HAND,
@@ -7,5 +9,12 @@ public enum EquipmentSlot {
     FEET,
     LEGS,
     CHEST,
-    HEAD
+    HEAD;
+
+    public static EquipmentSlot fromHand(Hand hand) {
+        return switch (hand) {
+            case MAIN_HAND -> HAND;
+            case OFF_HAND -> OFF_HAND;
+        };
+    }
 }

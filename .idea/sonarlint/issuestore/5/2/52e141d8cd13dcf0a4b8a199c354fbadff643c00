@@ -1,0 +1,36 @@
+
+b
+java:S2637v"EThis method's return value is marked "@NotNull" but null is returned.(“˜­´8Õ«¢¸0
+A
+java:S1659
+"Declare "y" on a separate line.(õ”¸©üÿÿÿÿ8ŸÕ«¢¸0
+?
+java:S1659""Declare "type" on a separate line.(ñò×¼8ŸÕ«¢¸0
+e
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8ŸÕ«¢¸0
+W
+java:S1133"5Do not forget to remove this deprecated code someday.(ë–ü¥úÿÿÿÿ8 Õ«¢¸0
+e
+java:S63556"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8 Õ«¢¸0
+R
+java:S11337"5Do not forget to remove this deprecated code someday.(Ú÷öó8 Õ«¢¸0
+L
+java:S1874v"/Remove this use of "byValue"; it is deprecated.(“˜­´8¢Õ«¢¸0
+e
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8¢Õ«¢¸0
+S
+java:S1133€"5Do not forget to remove this deprecated code someday.(ğ‹‡8¢Õ«¢¸0
+P
+java:S1874±"2Remove this use of "setRawType"; it is deprecated.(£ØïÌ8£Õ«¢¸0
+f
+java:S6355º"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8£Õ«¢¸0
+S
+java:S1133»"5Do not forget to remove this deprecated code someday.(¥á¥“8¤Õ«¢¸0
+f
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8¥Õ«¢¸0
+S
+java:S1133"5Do not forget to remove this deprecated code someday.(òÔ²Â8¥Õ«¢¸0
+f
+java:S6355™"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8¥Õ«¢¸0
+X
+java:S1133›"5Do not forget to remove this deprecated code someday.(¸ó£ ùÿÿÿÿ8¥Õ«¢¸0

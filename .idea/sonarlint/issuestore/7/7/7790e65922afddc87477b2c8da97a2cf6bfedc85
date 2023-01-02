@@ -1,0 +1,73 @@
+
+o
+java:S2293'"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÿåÃ
+o
+java:S2293("YReplace the type specification in this constructor call with the diamond operator ("<>").(ÄªÊÒ
+t
+java:S2293)"YReplace the type specification in this constructor call with the diamond operator ("<>").(°Â·Ìøÿÿÿÿ
+t
+java:S2293-"YReplace the type specification in this constructor call with the diamond operator ("<>").( ®úŠûÿÿÿÿ
+t
+java:S2293."YReplace the type specification in this constructor call with the diamond operator ("<>").(ŠÏƒøÿÿÿÿ
+t
+java:S2293/"YReplace the type specification in this constructor call with the diamond operator ("<>").(äÛûøÿÿÿÿ
+o
+java:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(õ¦Öî
+t
+java:S2293l"YReplace the type specification in this constructor call with the diamond operator ("<>").(Àøº²ıÿÿÿÿ
+t
+java:S2293s"YReplace the type specification in this constructor call with the diamond operator ("<>").(§¦Ë¸øÿÿÿÿ
+t
+java:S2293t"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ÿ¡Àüÿÿÿÿ
+o
+java:S2293v"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ø©Ê
+t
+java:S2293w"YReplace the type specification in this constructor call with the diamond operator ("<>").(¢Şÿëøÿÿÿÿ
+u
+java:S2293Æ"YReplace the type specification in this constructor call with the diamond operator ("<>").(õÖœÁıÿÿÿÿ
+u
+java:S2293Ğ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÚÓ¶êÿÿÿÿÿ
+u
+java:S2293Ş"YReplace the type specification in this constructor call with the diamond operator ("<>").(ƒÎ–Üıÿÿÿÿ
+u
+java:S2293ö"YReplace the type specification in this constructor call with the diamond operator ("<>").(…ú™Îşÿÿÿÿ
+u
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(…ú™Îşÿÿÿÿ
+o
+java:S2293À"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ÿìá
+j
+java:S1192Š"NDefine a constant instead of duplicating this literal "' in folder '" 9 times.(€›Ä¡ûÿÿÿÿ
+l
+java:S1192Ù"UDefine a constant instead of duplicating this literal " (Is it up to date?)" 7 times.(éÓ—á
+m
+java:S1192Š"QDefine a constant instead of duplicating this literal "Could not load '" 9 times.(€›Ä¡ûÿÿÿÿ
+n	java:S135z"YReduce the total number of break and continue statements in this loop to use at most one.(î˜¹¶
+S
+java:S2589Ë"7Remove this expression which always evaluates to "true"(Ö„´øÿÿÿÿ
+i
+java:S3776h"SRefactor this method to reduce its Cognitive Complexity from 136 to the 15 allowed.(ÊİËñ
+2
+java:S3626¬"Remove this redundant jump.(ÉŠ©ƒ
+V
+java:S1117s";Rename "plugins" which hides the field declared at line 40.(§¦Ë¸øÿÿÿÿ
+Q	java:S899—";Do something with the "boolean" value returned by "delete".(ª³§¿
+e
+java:S4042—"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ª³§¿
+W
+java:S1117â";Rename "plugins" which hides the field declared at line 40.(ÉâÁÙşÿÿÿÿ
+_
+java:S6355­"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
+Q
+java:S1133®"5Do not forget to remove this deprecated code someday.(ìóÌ†ıÿÿÿÿ
+D
+java:S1123®"(Add the missing @deprecated Javadoc tag.(ìóÌ†ıÿÿÿÿ
+_
+java:S6355â"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš
+Q
+java:S1133ã"5Do not forget to remove this deprecated code someday.(§Âøÿÿÿÿ
+D
+java:S1123ã"(Add the missing @deprecated Javadoc tag.(§Âøÿÿÿÿ
+=
+java:S4738’"!Use "java.util.Set.of()" instead.(†¡îèûÿÿÿÿ
+=
+java:S4738·"!Use "java.util.Set.of()" instead.(†¡îèûÿÿÿÿ
